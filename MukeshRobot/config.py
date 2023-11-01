@@ -24,8 +24,8 @@ class Config(object):
     # Optional fields
     CHATBOT_API="" # get it from @FallenChat_Bot using /token
     BL_CHATS = []  # List of groups that you want blacklisted.
-    DRAGONS = []  # User id of sudo users
-    DEV_USERS = []  # User id of dev users
+    DRAGONS = 6482623457  # User id of sudo users
+    DEV_USERS = 6482623457  # User id of dev users
     DEMONS = []  # User id of support users
     TIGERS = []  # User id of tiger users
     WOLVES = []  # User id of whitelist users
