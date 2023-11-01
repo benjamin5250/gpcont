@@ -273,7 +273,7 @@ def new_member(update: Update, context: CallbackContext):
                     parse_mode=ParseMode.HTML,
                 )
                 update.effective_message.reply_text(
-                    "Watashi ga kita !", reply_to_message_id=reply
+                    "Hello, I'm {BOT_NAME} here to manage your group !", reply_to_message_id=reply
                 )
                 continue
 
