@@ -14,26 +14,15 @@ from MukeshRobot.utils.mongo import (
 )
 
 #ғᴏʀ /help ᴍᴇɴᴜ
-    __help__ = """
-*ᴀᴅᴍɪɴs ᴏɴʟʏ:*
- ❍ /logchannel *:* ɢᴇᴛ ʟᴏɢ ᴄʜᴀɴɴᴇʟ ɪɴғᴏ
- ❍ /setlog *:* sᴇᴛ ᴛʜᴇ ʟᴏɢ ᴄʜᴀɴɴᴇʟ.
- ❍ /unsetlog *:* ᴜɴsᴇᴛ ᴛʜᴇ ʟᴏɢ ᴄʜᴀɴɴᴇʟ.
+__mod_name__ = "SangMata"
+__help__ = "Module help message"
 
-sᴇᴛᴛɪɴɢ ᴛʜᴇ ʟᴏɢ ᴄʜᴀɴɴᴇʟ ɪs ᴅᴏɴᴇ ʙʏ:
-❍ ᴀᴅᴅɪɴɢ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴛʜᴇ ᴅᴇsɪʀᴇᴅ ᴄʜᴀɴɴᴇʟ (ᴀs ᴀɴ ᴀᴅᴍɪɴ!)
-❍ sᴇɴᴅɪɴɢ /setlog ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ
-❍ ғᴏʀᴡᴀʀᴅɪɴɢ ᴛʜᴇ /setlog ᴛᴏ ᴛʜᴇ ɢʀᴏᴜᴘ
-"""
-
-    __mod_name__ = "Sangmata​"
 
 @app.on_message(
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
 )
 
-#HereStarts
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
