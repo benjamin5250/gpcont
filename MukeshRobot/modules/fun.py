@@ -271,13 +271,10 @@ def truth(update: Update, context: CallbackContext):
 
     truth_type = random.choice(("Text", "Sticker"))
    
-    if truth_type == "Sticker":
-        try:
-               temp = random.choice(fun_strings.TRUTH_TEMPLATES)
+    if fuck_type == "Sticker":
+        temp = random.choice(fun_strings.TRUTH_TEMPLATES)
         reply = temp.format(user1=user1, user2=user2)
         reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
-        except BadRequest:
-            truth_type = "Text"
 
     if fuck_type == "Text":
         temp = random.choice(fun_strings.TRUTH_TEMPLATES)
