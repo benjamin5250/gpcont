@@ -9,7 +9,7 @@ db = mongo.MukeshRobot
 
 coupledb = db.couple
 karmadb = db.karma
-matadb = sangmata
+matadb = db.sangmata
 localesdb = db.locales
 
 async def _get_lovers(chat_id: int):
