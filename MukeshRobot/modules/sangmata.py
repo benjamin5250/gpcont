@@ -4,6 +4,7 @@ from MukeshRobot import pbot as app # This is bot's client
 from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
 from MukeshRobot.utils.admins import can_change_info
+from MukeshRobot.utils.mongo import use_chat_lang
 from MukeshRobot.utils.mongo import (
     add_userdata,
     cek_userdata,
@@ -18,12 +19,13 @@ __mod_name__ = "SangMata"
 __help__ = "Module help message"
 
 
+# Check user that change first_name, last_name and usernaname
 @app.on_message(
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
 )
-
-async def cek_mataa(_, ctx: Message):
+@use_chat_lang()
+async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
     if not await cek_userdata(ctx.from_user.id):
@@ -40,7 +42,7 @@ async def cek_mataa(_, ctx: Message):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"👀 <b>User History</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+        msg += f"👀 <b>Mata MissKaty</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
@@ -66,7 +68,10 @@ async def cek_mataa(_, ctx: Message):
             ctx.from_user.last_name,
         )
     if lastname_before != ctx.from_user.last_name:
-        lastname_before = lastname_before 
+        lastname_before = lastname_before or strings("no_last_name")
+        lastname_after = ctx.from_user.last_name or strings("no_last_name")
+        msg += strings("lastname_change_msg").format(
+            bef=lastname_before, aft=lastname_after
         )
         await add_userdata(
             ctx.from_user.id,
@@ -80,29 +85,30 @@ async def cek_mataa(_, ctx: Message):
 
 @app.on_message(
     filters.group
-    & filters.command("sangmata_set")
+    & filters.command("sangmata_set", COMMAND_HANDLER)
     & ~filters.bot
     & ~filters.via_bot
 )
-@can_change_info
-async def set_mataa(_, ctx: Message):
+@adminsOnly("can_change_info")
+@use_chat_lang()
+async def set_mataa(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
-            "set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
+            strings("set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
         )
     if ctx.command[1] == "on":
         cekset = await is_sangmata_on(ctx.chat.id)
         if cekset:
-            await ctx.reply_msg("sangmata_already_on")
+            await ctx.reply_msg(strings("sangmata_already_on"))
         else:
             await sangmata_on(ctx.chat.id)
-            await ctx.reply_msg("sangmata_enabled")
+            await ctx.reply_msg(strings("sangmata_enabled"))
     elif ctx.command[1] == "off":
         cekset = await is_sangmata_on(ctx.chat.id)
         if not cekset:
-            await ctx.reply_msg("sangmata_already_off")
+            await ctx.reply_msg(strings("sangmata_already_off"))
         else:
             await sangmata_off(ctx.chat.id)
-            await ctx.reply_msg("sangmata_disabled")
+            await ctx.reply_msg(strings("sangmata_disabled"))
     else:
-        await ctx.reply_msg("wrong_param")
+        await ctx.reply_msg(strings("wrong_param"), del_in=6)
