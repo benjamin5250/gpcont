@@ -10,6 +10,7 @@ db = mongo.MukeshRobot
 coupledb = db.couple
 karmadb = db.karma
 matadb = db.mata
+localesdb = db.locales
 
 async def _get_lovers(chat_id: int):
     lovers = await coupledb.find_one({"chat_id": chat_id})
@@ -158,3 +159,17 @@ async def sangmata_on(chat_id: int) -> bool:
 
 async def sangmata_off(chat_id: int):
     await matadb.delete_one({"chat_id_toggle": chat_id})
+
+
+#chatLang
+async def set_db_lang(chat_id: int, chat_type: str, lang_code: str):
+    await localesdb.update_one(
+        {"chat_id": chat_id},
+        {"$set": {"lang": lang_code, "chat_type": chat_type.value}},
+        upsert=True,
+    )
+
+
+async def get_db_lang(chat_id: int) -> str:
+    ul = await localesdb.find_one({"chat_id": chat_id})
+    return ul["lang"] if ul else {}
