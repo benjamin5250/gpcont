@@ -23,7 +23,7 @@ __help__ = "Module help message"
     group=5,
 )
 
-async def cek_mataa(_, ctx: Message, strings):
+async def cek_mataa(_, ctx: Message):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
     if not await cek_userdata(ctx.from_user.id):
@@ -66,10 +66,7 @@ async def cek_mataa(_, ctx: Message, strings):
             ctx.from_user.last_name,
         )
     if lastname_before != ctx.from_user.last_name:
-        lastname_before = lastname_before or strings("no_last_name")
-        lastname_after = ctx.from_user.last_name or strings("no_last_name")
-        msg += strings("lastname_change_msg").format(
-            bef=lastname_before, aft=lastname_after
+        lastname_before = lastname_before 
         )
         await add_userdata(
             ctx.from_user.id,
@@ -88,24 +85,24 @@ async def cek_mataa(_, ctx: Message, strings):
     & ~filters.via_bot
 )
 @can_change_info
-async def set_mataa(_, ctx: Message, strings):
+async def set_mataa(_, ctx: Message):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
-            strings("set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
+            "set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
         )
     if ctx.command[1] == "on":
         cekset = await is_sangmata_on(ctx.chat.id)
         if cekset:
-            await ctx.reply_msg(strings("sangmata_already_on"))
+            await ctx.reply_msg("sangmata_already_on")
         else:
             await sangmata_on(ctx.chat.id)
-            await ctx.reply_msg(strings("sangmata_enabled"))
+            await ctx.reply_msg("sangmata_enabled")
     elif ctx.command[1] == "off":
         cekset = await is_sangmata_on(ctx.chat.id)
         if not cekset:
-            await ctx.reply_msg(strings("sangmata_already_off"))
+            await ctx.reply_msg("sangmata_already_off")
         else:
             await sangmata_off(ctx.chat.id)
-            await ctx.reply_msg(strings("sangmata_disabled"))
+            await ctx.reply_msg("sangmata_disabled")
     else:
-        await ctx.reply_msg(strings("wrong_param"), del_in=6)
+        await ctx.reply_msg("wrong_param")
