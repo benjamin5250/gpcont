@@ -230,7 +230,7 @@ def fuck(update: Update, context: CallbackContext):
         user2 = curr_user
 
     fuck_type = random.choice(("Text", "Gif", "Sticker"))
-    if pat_type == "Gif":
+    if fuck_type == "Gif":
         try:
             temp = random.choice(fun_strings.FUCK_GIFS)
             reply_to.reply_animation(temp)
@@ -242,7 +242,7 @@ def fuck(update: Update, context: CallbackContext):
             temp = random.choice(fun_strings.FUCK_STICKERS)
             reply_to.reply_sticker(temp)
         except BadRequest:
-            pat_type = "Text"
+            fuck_type = "Text"
 
     if fuck_type == "Text":
         temp = random.choice(fun_strings.FUCK_TEMPLATES)
@@ -313,6 +313,7 @@ __command_list__ = [
     "shout",
     "weebify",
     "8ball",
+    "fuck",
 ]
 __handlers__ = [
     RUNS_HANDLER,
