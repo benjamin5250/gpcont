@@ -4,7 +4,7 @@ from MukeshRobot import pbot as app # This is bot's client
 from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
 from MukeshRobot.utils.admins import can_change_info
-from MukeshRobot.utils.mongo import use_chat_lang
+from MukeshRobot.utils.localization import use_chat_lang
 from MukeshRobot.utils.mongo import (
     add_userdata,
     cek_userdata,
