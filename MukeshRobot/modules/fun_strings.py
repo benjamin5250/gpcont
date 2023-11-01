@@ -440,3 +440,20 @@ TABLE = (
     "I ran out of tables, will order more.",
     "Go do some work instead of flippin tables.",
 )
+
+FUCK_TEMPLATES = (
+    "{user1} သည် {user2} ၏ပါးစပ်ကို ဆောင့်လိုးလိုက်သည်။",
+    "*{user1} သည် {user2}၏ ဖင်ကို ခွလိုးလိုက်သည်။*",
+    
+)
+
+FUCK_GIFS = (
+    "CgACAgQAAxkBAAIBJGVCk3SPuAw2XlnFJAbKC1_Nhq8ZAALUDQAChNmoUPof2NBUactJMwQ",
+    "CgACAgIAAxkBAAIBJ2VCk3aih2roxRggMQ47uGylfF6EAALSFAACInOJSkwuXV38YLD8MwQ",
+)
+
+FUCK_STICKERS = (
+    "CAACAgQAAxkBAAEHz5JlQpIKLS_nMje7YYYy_PFTpCextgACGw4AAsI9UVM-ohhmP7Cs0B4E",
+    "CAACAgQAAxkBAAEHz5VlQpKrdAwZ2YAy7jQ7TsJd9lbmLwACVA4AApUm6VF8iKVqdmlgsh4E",
+    "CAACAgQAAxkBAAEHz5hlQpLFwcijbG5UWJyagMCFW3IS8gACyQ8AAvXRuVC2A7h6-l8Z3h4E",
+)
