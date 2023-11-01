@@ -223,7 +223,7 @@ def fuck(update: Update, context: CallbackContext):
     if user_id:
         fucked_user = bot.get_chat(user_id)
         user1 = curr_user
-        user2 = html.escape(patted_user.first_name)
+        user2 = html.escape(fucked_user.first_name)
 
     else:
         user1 = bot.first_name
