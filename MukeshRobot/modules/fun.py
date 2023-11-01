@@ -250,7 +250,7 @@ def fuck(update: Update, context: CallbackContext):
         reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
 #Truth
-def truth(update: Update, context: CallbackContext):
+def check(update: Update, context: CallbackContext):
     bot = context.bot
     args = context.args
     message = update.effective_message
@@ -261,23 +261,23 @@ def truth(update: Update, context: CallbackContext):
     user_id = extract_user(message, args)
 
     if user_id:
-        truth_user = bot.get_chat(user_id)
+        checked_user = bot.get_chat(user_id)
         user1 = curr_user
-        user2 = html.escape(truth_user.first_name)
+        user2 = html.escape(checked_user.first_name)
 
     else:
         user1 = bot.first_name
         user2 = curr_user
 
-    truth_type = random.choice(("Text", "Sticker"))
+    check_type = random.choice(("Text", "Sticker"))
    
-    if fuck_type == "Sticker":
-        temp = random.choice(fun_strings.TRUTH_TEMPLATES)
+    if check_type == "Sticker":
+        temp = random.choice(fun_strings.CHECK_TEMPLATES)
         reply = temp.format(user1=user1, user2=user2)
         reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
-    if fuck_type == "Text":
-        temp = random.choice(fun_strings.TRUTH_TEMPLATES)
+    if check_type == "Text":
+        temp = random.choice(fun_strings.CHECK_TEMPLATES)
         reply = temp.format(user1=user1, user2=user2)
         reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
@@ -312,7 +312,7 @@ EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball, run_async=True
 TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 FUCK_HANDLER = DisableAbleCommandHandler("fuck", fuck, run_async=True)
-TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth, run_async=True)
+TRUTH_HANDLER = DisableAbleCommandHandler("check", check, run_async=True)
 
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -328,7 +328,7 @@ dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(FUCK_HANDLER)
-dispatcher.add_handler(TRUTH_HANDLER)
+dispatcher.add_handler(CHECK_HANDLER)
 
 __mod_name__ = "Fᴜɴ"
 __command_list__ = [
@@ -347,7 +347,7 @@ __command_list__ = [
     "weebify",
     "8ball",
     "fuck",
-    "truth",
+    "check",
 ]
 __handlers__ = [
     RUNS_HANDLER,
@@ -364,5 +364,5 @@ __handlers__ = [
     SHOUT_HANDLER,
     EIGHTBALL_HANDLER,
     FUCK_HANDLER,
-    TRUTH_HANDLER,
+    CHECK_HANDLER,
 ]
