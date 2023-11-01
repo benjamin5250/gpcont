@@ -209,6 +209,45 @@ def table(update: Update, context: CallbackContext):
     )
     reply_text(random.choice(fun_strings.TABLE))
 
+#fuck
+def fuck(update: Update, context: CallbackContext):
+    bot = context.bot
+    args = context.args
+    message = update.effective_message
+
+    reply_to = message.reply_to_message if message.reply_to_message else message
+
+    curr_user = html.escape(message.from_user.first_name)
+    user_id = extract_user(message, args)
+
+    if user_id:
+        fucked_user = bot.get_chat(user_id)
+        user1 = curr_user
+        user2 = html.escape(patted_user.first_name)
+
+    else:
+        user1 = bot.first_name
+        user2 = curr_user
+
+    fuck_type = random.choice(("Text", "Gif", "Sticker"))
+    if pat_type == "Gif":
+        try:
+            temp = random.choice(fun_strings.FUCK_GIFS)
+            reply_to.reply_animation(temp)
+        except BadRequest:
+            fuck_type = "Text"
+
+    if fuck_type == "Sticker":
+        try:
+            temp = random.choice(fun_strings.FUCK_STICKERS)
+            reply_to.reply_sticker(temp)
+        except BadRequest:
+            pat_type = "Text"
+
+    if fuck_type == "Text":
+        temp = random.choice(fun_strings.FUCK_TEMPLATES)
+        reply = temp.format(user1=user1, user2=user2)
+        reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
 __help__ = """
@@ -241,6 +280,7 @@ DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide, run_async=True)
 EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball, run_async=True)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
+FUCK_HANDLER = DisableAbleCommandHandler("fuck", fuck, run_async=True)
 
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -255,6 +295,7 @@ dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
+dispatcher.add_handler(FUCK_HANDLER)
 
 __mod_name__ = "Fᴜɴ"
 __command_list__ = [
@@ -287,4 +328,5 @@ __handlers__ = [
     SANITIZE_HANDLER,
     SHOUT_HANDLER,
     EIGHTBALL_HANDLER,
+    FUCK_HANDLER,
 ]
