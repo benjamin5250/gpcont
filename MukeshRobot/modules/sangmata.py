@@ -89,7 +89,7 @@ async def cek_mataa(_, ctx: Message, strings):
     & ~filters.bot
     & ~filters.via_bot
 )
-@adminsOnly("can_change_info")
+@can_change_info
 @use_chat_lang()
 async def set_mataa(_, ctx: Message, strings):
     if len(ctx.command) == 1:
