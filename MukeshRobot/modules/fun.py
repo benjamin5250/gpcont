@@ -312,7 +312,7 @@ EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball, run_async=True
 TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 FUCK_HANDLER = DisableAbleCommandHandler("fuck", fuck, run_async=True)
-TRUTH_HANDLER = DisableAbleCommandHandler("check", check, run_async=True)
+CHECK_HANDLER = DisableAbleCommandHandler("check", check, run_async=True)
 
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
