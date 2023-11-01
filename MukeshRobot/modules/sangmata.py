@@ -15,8 +15,10 @@ from MukeshRobot.utils.mongo import (
 
 #ғᴏʀ /help ᴍᴇɴᴜ
 __mod_name__ = "Sangmata"
-__help__ = """"
-
+ __help__ = """
+*ᴀᴅᴍɪɴs ᴏɴʟʏ:*
+ ❍ /sangmata_set on
+"""
 
 @app.on_message(
     filters.group & ~filters.bot & ~filters.via_bot,
