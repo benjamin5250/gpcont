@@ -458,7 +458,7 @@ FUCK_STICKERS = (
     "CAACAgQAAxkBAAEHz5hlQpLFwcijbG5UWJyagMCFW3IS8gACyQ8AAvXRuVC2A7h6-l8Z3h4E",
 )
 
-TRUTH_TEMPLATES = (
+CHECK_TEMPLATES = (
     "{user2} သည် မသေချာမရေရာသော စကားကိုပြောနေပါသည်။",
     "{user2} ပြောသောစကားမှာ ၉၀% မှန်ကန်မှုရှိပါသည်။",
     "{user2} လိမ်ညာပြောဆိုနေခြင်းဖြစ်ပါသည်။",
