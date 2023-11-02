@@ -1,7 +1,7 @@
 from MukeshRobot import pbot as app # This is bot's client
 from pyrogram import filters # pyrogram filters
 from MukeshRobot import DRAGONS
-
+from telebot import TeleBot
 
 #ғᴏʀ /help ᴍᴇɴᴜ
 __mod_name__ = "Link Remover"
