@@ -1,4 +1,4 @@
-from MukeshRobot import pbot as client # This is bot's client
+from MukeshRobot import pbot as Client # This is bot's Client
 from pyrogram import filters # pyrogram filters
 import os, logging, asyncio
 from telethon import Button
@@ -18,7 +18,7 @@ __help__ = "Module help message"
 
 spam_chats = []
 
-@client.on(events.NewMessage(pattern="^/mentionall|@mentionall|@all ?(.*)"))
+@Client.on(events.NewMessage(pattern="^/mentionall|@mentionall|@all ?(.*)"))
 async def mentionall(event):
     chat_id = event.chat_id
     if event.is_private:
@@ -28,7 +28,7 @@ async def mentionall(event):
 
     is_admin = False
     try:
-        partici_ = await client(GetParticipantRequest(event.chat_id, event.sender_id))
+        partici_ = await Client(GetParticipantRequest(event.chat_id, event.sender_id))
     except UserNotParticipantError:
         is_admin = False
     else:
@@ -59,7 +59,7 @@ async def mentionall(event):
     spam_chats.append(chat_id)
     usrnum = 0
     usrtxt = ""
-    async for usr in client.iter_participants(chat_id):
+    async for usr in Client.iter_participants(chat_id):
         if not chat_id in spam_chats:
             break
         usrnum += 1
@@ -67,7 +67,7 @@ async def mentionall(event):
         if usrnum == 5:
             if mode == "text_on_cmd":
                 txt = f"{usrtxt}\n\n{msg}"
-                await client.send_message(chat_id, txt)
+                await Client.send_message(chat_id, txt)
             elif mode == "text_on_reply":
                 await msg.reply(usrtxt)
             await asyncio.sleep(2)
@@ -79,7 +79,7 @@ async def mentionall(event):
         pass
 
 
-@client.on(events.NewMessage(pattern="^/admins|/admin|@admin|@admins ?(.*)"))
+@Client.on(events.NewMessage(pattern="^/admins|/admin|@admin|@admins ?(.*)"))
 async def _(event):
     chat_id = event.chat_id
     if event.is_private:
@@ -87,7 +87,7 @@ async def _(event):
 
     is_admin = False
     try:
-        partici_ = await client(GetParticipantRequest(event.chat_id, event.sender_id))
+        partici_ = await Client(GetParticipantRequest(event.chat_id, event.sender_id))
     except UserNotParticipantError:
         is_admin = False
     else:
@@ -119,7 +119,7 @@ async def _(event):
     usrnum = 0
     usrtxt = ""
     chat = await event.get_input_chat()
-    async for x in client.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in Client.iter_participants(chat, filter=ChannelParticipantsAdmins):
         if not chat_id in spam_chats:
             break
         usrnum += 1
@@ -127,7 +127,7 @@ async def _(event):
         if usrnum == 5:
             if mode == "text_on_cmd":
                 txt = f"{usrtxt}\n\n{msg}"
-                await client.send_message(chat_id, txt)
+                await Client.send_message(chat_id, txt)
             elif mode == "text_on_reply":
                 await msg.reply(usrtxt)
             await asyncio.sleep(2)
@@ -139,7 +139,7 @@ async def _(event):
         pass
 
 
-@client.on(events.NewMessage(pattern="^/cancel$"))
+@Client.on(events.NewMessage(pattern="^/cancel$"))
 async def cancel_spam(event):
     if not event.chat_id in spam_chats:
         return await event.respond("ᴛʜᴇʀᴇ ɪs ɴᴏ ᴘʀᴏᴄᴄᴇss ᴏɴ ɢᴏɪɴɢ...")
@@ -150,7 +150,7 @@ async def cancel_spam(event):
             pass
         return await event.respond("sᴛᴏᴘᴘᴇᴅ.")
 
-@client.on(events.NewMessage(pattern="^/fools|ကျပ်မပြည့်တဲ့သုံးကောင်|ကျပ်မပြည့်တဲ့သုံးကောင်|@ကျပ်မပြည့်တဲ့သုံးကောင် ?(.*)")) 
+@Client.on(events.NewMessage(pattern="^/fools|ကျပ်မပြည့်တဲ့သုံးကောင်|ကျပ်မပြည့်တဲ့သုံးကောင်|@ကျပ်မပြည့်တဲ့သုံးကောင် ?(.*)")) 
 async def help(event):
     chat_id = event.chat_id
     if not event.is_private:
@@ -160,7 +160,7 @@ async def help(event):
         helptext,
         link_preview=False )
 
-@client.on(events.NewMessage(pattern="^/Mommy|@ယောက္ခမ ?(.*)")) 
+@Client.on(events.NewMessage(pattern="^/Mommy|@ယောက္ခမ ?(.*)")) 
 async def help(event):
     chat_id = event.chat_id
     if not event.is_private:
