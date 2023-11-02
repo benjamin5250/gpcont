@@ -31,7 +31,7 @@ benjamin = [
 @run_async
 def benjamin(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
-    msg = update.effective_message.reply_text("🔫")
+    msg = update.effective_message.reply_text("💘")
     for x in range(EDIT_TIMES):
         msg.edit_text(benjamin[x % 12])
         time.sleep(EDIT_SLEEP)
