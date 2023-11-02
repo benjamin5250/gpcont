@@ -1,6 +1,6 @@
 from MukeshRobot import pbot as app # This is bot's client
 from pyrogram import filters # pyrogram filters
-
+from MukeshRobot import DRAGONS
 
 
 #ғᴏʀ /help ᴍᴇɴᴜ
@@ -12,7 +12,7 @@ def check_message(type, message):
     print("\n\n\n\n==============\n\n\n")
     print(type, message)
 
-    if message.from_user.id in ADMINS:
+    if message.from_user.id in DRAGONS:
         return
 
     # check getChatMember, check is creator or administrator
@@ -45,7 +45,3 @@ def edit_message(message):
 @app.message_handler(func=lambda message: True)
 def new_message(message):
     check_message("new", message)
-
-# keep alive
-if __name__ == '__main__':
-    app.infinity_polling()
