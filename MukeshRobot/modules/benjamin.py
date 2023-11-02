@@ -27,14 +27,16 @@ benjamin = [
     "လီးတွေဖတ်နေတာလား",
 ]
 
+@user_admin
 @run_async
 def benjamin(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
-    msg = update.effective_message.reply_text("💘")
+    msg = update.effective_message.reply_text("🔫")
     for x in range(EDIT_TIMES):
         msg.edit_text(benjamin[x % 12])
         time.sleep(EDIT_SLEEP)
     msg.edit_text("⚰")
+
 
 BENJAMIN_HANDLER = DisableAbleCommandHandler("benjamin", benjamin)
 dispatcher.add_handler(BENJAMIN_HANDLER)
