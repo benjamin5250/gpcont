@@ -7,6 +7,12 @@ from telebot import TeleBot
 __mod_name__ = "Link Remover"
 __help__ = "Module help message"
 
+def check_message(type, message):
+    print("\n\n\n\n==============\n\n\n")
+    print(type, message)
+
+    if message.from_user.id in DRAGONS:
+        return
 
 @app.on_message(filters.forward & filters.document)
 async def fwdmsg(bot, message):
