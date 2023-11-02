@@ -9,7 +9,7 @@ from MukeshRobot.modules.helper_funcs.chat_status import user_admin
 
 
 # sleep how many times after each edit in 'benjamin'
-EDIT_SLEEP = 3
+EDIT_SLEEP = 1
 # edit how many times in 'benjamin'
 EDIT_TIMES = 12
 
