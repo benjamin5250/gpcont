@@ -1,4 +1,4 @@
-from MukeshRobot import pbot as mukesh # This is bot's client
+from MukeshRobot import pbot as client # This is bot's client
 from pyrogram import filters # pyrogram filters
 import os, logging, asyncio
 from telethon import Button
