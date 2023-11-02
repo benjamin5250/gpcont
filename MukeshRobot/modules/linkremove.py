@@ -36,12 +36,3 @@ def check_message(type, message):
         print("Found link to website in message text")
         app.delete_message(message.chat.id, message.message_id)
 
-# edit message listener
-@app.edited_message_handler(func=lambda message: True)
-def edit_message(message):
-    check_message("edit", message)
-
-# new message listener
-@app.message_handler(func=lambda message: True)
-def new_message(message):
-    check_message("new", message)
