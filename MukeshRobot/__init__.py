@@ -167,7 +167,7 @@ pbot.db = AsyncClient(MONGO_DB_URI)
 
 jobstores = {
     "default": MongoDBJobStore(
-        client=MongoClient(MONGO_DB_URI), database=DATABASE_NAME, collection="nightmode"
+        client=MongoClient(MONGO_DB_URI)
     )
 }
 
