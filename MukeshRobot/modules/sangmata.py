@@ -42,7 +42,7 @@ async def cek_mataa(_, ctx: Message, strings):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"👀 <b>User History</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+        msg += f"💔<b>User History</b>💔\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
@@ -94,7 +94,7 @@ async def cek_mataa(_, ctx: Message, strings):
 async def set_mataa(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_text(
-            strings("set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
+            strings("set_sangmata_help").format(cmd=ctx.command[0]), delete_in=6
         )
     if ctx.command[1] == "on":
         cekset = await is_sangmata_on(ctx.chat.id)
@@ -111,5 +111,5 @@ async def set_mataa(_, ctx: Message, strings):
             await sangmata_off(ctx.chat.id)
             await ctx.reply_text(strings("sangmata_disabled"))
     else:
-        await ctx.reply_text(strings("wrong_param"), del_in=6)
+        await ctx.reply_text(strings("wrong_param"), delete_in=6)
 
