@@ -80,7 +80,7 @@ async def cek_mataa(_, ctx: Message, strings):
             ctx.from_user.last_name,
         )
     if msg != "":
-        await ctx.reply_msg(msg, quote=False)
+        await ctx.reply_text(msg, quote=False)
 
 
 @app.on_message(
@@ -93,23 +93,23 @@ async def cek_mataa(_, ctx: Message, strings):
 @use_chat_lang()
 async def set_mataa(_, ctx: Message, strings):
     if len(ctx.command) == 1:
-        return await ctx.reply_msg(
+        return await ctx.reply_text(
             strings("set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
         )
     if ctx.command[1] == "on":
         cekset = await is_sangmata_on(ctx.chat.id)
         if cekset:
-            await ctx.reply_msg(strings("sangmata_already_on"))
+            await ctx.reply_text(strings("sangmata_already_on"))
         else:
             await sangmata_on(ctx.chat.id)
-            await ctx.reply_msg(strings("sangmata_enabled"))
+            await ctx.reply_text(strings("sangmata_enabled"))
     elif ctx.command[1] == "off":
         cekset = await is_sangmata_on(ctx.chat.id)
         if not cekset:
-            await ctx.reply_msg(strings("sangmata_already_off"))
+            await ctx.reply_text(strings("sangmata_already_off"))
         else:
             await sangmata_off(ctx.chat.id)
-            await ctx.reply_msg(strings("sangmata_disabled"))
+            await ctx.reply_text(strings("sangmata_disabled"))
     else:
-        await ctx.reply_msg(strings("wrong_param"), del_in=6)
+        await ctx.reply_text(strings("wrong_param"), del_in=6)
 
