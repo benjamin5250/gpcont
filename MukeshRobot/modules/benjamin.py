@@ -8,10 +8,10 @@ from MukeshRobot.modules.disable import DisableAbleCommandHandler
 from MukeshRobot.modules.helper_funcs.chat_status import user_admin
 
 
-# sleep how many times after each edit in 'benjaminoo'
+# sleep how many times after each edit in 'benjamin'
 EDIT_SLEEP = 1
 # edit how many times in 'benjaminoo'
-EDIT_TIMES = 15
+EDIT_TIMES = 30
 
 benjamin_oo = [
     "တစ်ခါတုန်းက",
@@ -29,19 +29,19 @@ benjamin_oo = [
 
 @user_admin
 @run_async
-def benjaminoo(update: Update, context: CallbackContext):
+def benjamin(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message.reply_text("💘")
     for x in range(EDIT_TIMES):
-        msg.edit_text(benjamin_oo[x % 15])
+        msg.edit_text(benjamin_oo[x % 30])
         time.sleep(EDIT_SLEEP)
     msg.edit_text("⚰")
 
 
-BENJAMINOO_HANDLER = DisableAbleCommandHandler("benjaminoo", benjaminoo)
+BENJAMIN_HANDLER = DisableAbleCommandHandler("benjamin", benjamin)
 
-dispatcher.add_handler(BENJAMINOO_HANDLER)
+dispatcher.add_handler(BENJAMIN_HANDLER)
 
 __mod_name__="​​Benjamin Alexander Oo"
 __help__=""" blah blah
-❍ /benjaminoo : ʟᴏᴠᴇ """
+❍ /benjamin : ʟᴏᴠᴇ """
