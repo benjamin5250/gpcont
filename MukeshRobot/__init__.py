@@ -11,6 +11,9 @@ from pyrogram import Client, errors
 from telethon import TelegramClient
 from pymongo import MongoClient
 from async_pymongo import AsyncClient
+from apscheduler.jobstores.mongodb import MongoDBJobStore
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from async_pymongo import AsyncClient
 
 StartTime = time.time()
 
@@ -158,7 +161,7 @@ DEV_USERS.add(abs(0b101100001110010100011000111101001))
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("mukesh", API_ID, API_HASH)
 
-pbot = Client("MukeshRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN,mongodb=dict(connection=AsyncClient(MONGO_DB_URI), remove_peers=False),in_memory=True)
+pbot = Client("MukeshRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, mongodb=dict(connection=AsyncClient(MONGO_DB_URI), remove_peers=False),in_memory=True)
 app.db = AsyncClient(MONGO_DB_URI)
 
 dispatcher = updater.dispatcher
