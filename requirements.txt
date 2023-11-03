@@ -58,3 +58,4 @@ pyshorteners
 faker
 pyfiglet
 pyTelegramBotAPI
+async_pymongo
