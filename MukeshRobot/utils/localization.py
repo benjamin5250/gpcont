@@ -11,10 +11,7 @@ from pyrogram.types import CallbackQuery, InlineQuery, Message
 from MukeshRobot.database.locale_db import get_db_lang
 
 enabled_locales: List[str] = [
-    # "en-GB",  # English (United Kingdom)
     "en-US",  # English (United States)
-    "id-ID",  # Indonesian
-    "id-JW",  # Javanese
 ]
 
 default_language: str = "en-US"
