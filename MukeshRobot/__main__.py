@@ -40,6 +40,7 @@ from MukeshRobot import (
     pbot,
     telethn,
     updater,
+    scheduler,
 )
 from MukeshRobot.modules import ALL_MODULES
 from MukeshRobot.modules.helper_funcs.chat_status import is_user_admin
