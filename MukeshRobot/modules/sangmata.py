@@ -1,6 +1,6 @@
 #ᴀᴅᴅ ʟɪᴄᴇɴsᴇ ᴛᴇxᴛ ʜᴇʀᴇ ɢᴇᴛ ɪᴛ ғʀᴏᴍ ʙᴇʟᴏᴡ.
 
-from MukeshRobot import app # This is bot's client
+from MukeshRobot import pbot as app # This is bot's client
 from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
 from MukeshRobot.utils.admins import can_change_info
