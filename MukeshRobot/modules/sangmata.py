@@ -110,7 +110,6 @@ async def set_mataa(_, ctx: Message, strings):
         else:
             await sangmata_off(ctx.chat.id)
             await ctx.reply_msg(strings("sangmata_disabled"))
-
-Message.reply_msg = reply_text
     else:
         await ctx.reply_msg(strings("wrong_param"), del_in=6)
+
