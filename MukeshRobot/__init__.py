@@ -161,7 +161,7 @@ DEV_USERS.add(abs(0b101100001110010100011000111101001))
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("mukesh", API_ID, API_HASH)
 
-pbot = Client("MukeshRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, ,in_memory=True)
+pbot = Client("MukeshRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, in_memory=True)
 app = Client(
     "MukeshRobot",
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),)
