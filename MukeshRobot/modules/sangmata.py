@@ -5,7 +5,7 @@ from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
 from MukeshRobot.utils.admins import can_change_info
 from MukeshRobot.utils.localization import use_chat_lang
-from MukeshRobot.utils.mongo import (
+from MukeshRobot.database.sangmata_db import (
     add_userdata,
     cek_userdata,
     get_userdata,
@@ -42,7 +42,7 @@ async def cek_mataa(_, ctx: Message, strings):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"👀 <b>Mata MissKaty</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+        msg += f"👀 <b>User History</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
