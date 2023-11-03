@@ -164,6 +164,12 @@ telethn = TelegramClient("mukesh", API_ID, API_HASH)
 pbot = Client("MukeshRobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, mongodb=dict(connection=AsyncClient(MONGO_DB_URI), remove_peers=False),in_memory=True)
 app.db = AsyncClient(MONGO_DB_URI)
 
+jobstores = {
+    "default": MongoDBJobStore(
+        client=MongoClient(MONGO_DB_URI), database=DATABASE_NAME, collection="nightmode"
+    )
+}
+
 dispatcher = updater.dispatcher
 aiohttpsession = ClientSession()
 
