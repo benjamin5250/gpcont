@@ -9,7 +9,6 @@ db = mongo.MukeshRobot
 
 coupledb = db.couple
 karmadb = db.karma
-matadb = db.sangmata
 localesdb = db.locales
 
 async def _get_lovers(chat_id: int):
@@ -121,30 +120,6 @@ async def alpha_to_int(user_id_alphabet: str) -> int:
         user_id += str(index)
     user_id = int(user_id)
     return user_id
-
-#SangMata
-async def cek_userdata(user_id: int) -> bool:
-    user = await matadb.find_one({"user_id": user_id})
-    return bool(user)
-
-
-async def get_userdata(user_id: int) -> bool:
-    user = await matadb.find_one({"user_id": user_id})
-    return user["username"], user["first_name"], user["last_name"]
-
-
-async def add_userdata(user_id: int, username, first_name, last_name):
-    await matadb.update_one(
-        {"user_id": user_id},
-        {
-            "$set": {
-                "username": username,
-                "first_name": first_name,
-                "last_name": last_name,
-            }
-        },
-        upsert=True,
-    )
 
 
 # Enable Mata MissKaty in Selected Chat
