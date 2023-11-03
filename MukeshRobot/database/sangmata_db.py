@@ -1,4 +1,4 @@
-from database import dbname
+from MukeshRobot.database import dbname
 
 matadb = dbname["sangmata"]
 
