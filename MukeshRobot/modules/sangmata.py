@@ -29,8 +29,9 @@ __help__ = "This function is on testing mode and isn't fully developed. \n Use `
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
-    if not await cek_userdata(ctx.from_user.id):
+    if not await cek_userdata(ctx.chat.id, ctx.from_user.id):
         return await add_userdata(
+            ctx.chat.id
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
