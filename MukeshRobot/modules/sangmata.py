@@ -29,7 +29,7 @@ __help__ = "This function is on testing mode and isn't fully developed. \n Use `
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
-    if not await cek_userdata(ctx.chat.id, ctx.from_user.id):
+    if not await cek_userdata(ctx.chat.id):
         return await add_userdata(
             ctx.chat.id,
             ctx.from_user.id,
@@ -37,7 +37,7 @@ async def cek_mataa(_, ctx: Message, strings):
             ctx.from_user.first_name,
             ctx.from_user.last_name,
         )
-    usernamebefore, first_name, lastname_before = await get_userdata(ctx.from_user.id)
+    usernamebefore, first_name, lastname_before = await get_userdata(ctx.chat.id)
     msg = ""
     if (
         usernamebefore != ctx.from_user.username
@@ -54,6 +54,7 @@ async def cek_mataa(_, ctx: Message, strings):
         )
         msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
         await add_userdata(
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -64,6 +65,7 @@ async def cek_mataa(_, ctx: Message, strings):
             bef=first_name, aft=ctx.from_user.first_name
         )
         await add_userdata(
+            ctx.chat.id
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -76,6 +78,7 @@ async def cek_mataa(_, ctx: Message, strings):
             bef=lastname_before, aft=lastname_after
         )
         await add_userdata(
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
