@@ -65,7 +65,7 @@ async def cek_mataa(_, ctx: Message, strings):
             bef=first_name, aft=ctx.from_user.first_name
         )
         await add_userdata(
-            ctx.chat.id
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
