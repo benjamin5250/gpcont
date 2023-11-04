@@ -85,7 +85,7 @@ async def cek_mataa(_, ctx: Message, strings):
 
 @app.on_message(
     filters.group
-    & filters.command("sangmata_set")
+    & filters.command("sangmata_set", COMMAND_HANDLER)
     & ~filters.bot
     & ~filters.via_bot
 )
@@ -113,3 +113,4 @@ async def set_mataa(_, ctx: Message, strings):
     else:
         await ctx.reply_text(strings("wrong_param"), delete_in=6)
 
+COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
