@@ -95,7 +95,7 @@ async def cek_mataa(_, ctx: Message, strings):
 async def set_mataa(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_text(
-            strings("set_sangmata_help").format(cmd=ctx.command[0]), delete_in=6
+            strings("set_sangmata_help").format(cmd=ctx.command[0])
         )
     if ctx.command[1] == "on":
         cekset = await is_sangmata_on(ctx.chat.id)
@@ -112,6 +112,6 @@ async def set_mataa(_, ctx: Message, strings):
             await sangmata_off(ctx.chat.id)
             await ctx.reply_text(strings("sangmata_disabled"))
     else:
-        await ctx.reply_text(strings("wrong_param"), delete_in=6)
+        await ctx.reply_text(strings("wrong_param"))
 
 
