@@ -17,7 +17,7 @@ from MukeshRobot.database.sangmata_db import (
 
 #ғᴏʀ /help ᴍᴇɴᴜ
 __mod_name__ = "SangMata"
-__help__ = "This function is on test version and isn't fully developed. It's test version. Use `/sangmata_set on` to enable, `/sangmata_set off` to disable."
+__help__ = "This function is on testing mode and isn't fully developed. \n\n Use `/sangmata_set on` to enable, \n\n `/sangmata_set off` to disable."
 
 
 # Check user that change first_name, last_name and usernaname
