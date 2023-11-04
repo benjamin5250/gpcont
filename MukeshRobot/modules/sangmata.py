@@ -3,6 +3,7 @@
 from MukeshRobot import pbot as app # This is bot's client
 from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
+from MukeshRobot.sanghandler import COMMAND_HANDLER
 from MukeshRobot.utils.admins import can_change_info
 from MukeshRobot.utils.localization import use_chat_lang
 from MukeshRobot.database.sangmata_db import (
