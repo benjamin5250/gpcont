@@ -24,7 +24,7 @@ async def add_userdata(chat_id: int, user_id: int, username, first_name, last_na
                 "last_name": last_name,
             }
         },
-        upsert=True,
+        upsert=False,
     )
 
 
