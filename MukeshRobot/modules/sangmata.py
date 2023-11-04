@@ -17,7 +17,7 @@ from MukeshRobot.database.sangmata_db import (
 
 #ғᴏʀ /help ᴍᴇɴᴜ
 __mod_name__ = "SangMata"
-__help__ = "This function is on testing mode and isn't fully developed. \n\n Use `/sangmata_set on` to enable, \n\n `/sangmata_set off` to disable."
+__help__ = "This function is on testing mode and isn't fully developed. \n Use `/sangmata_set on` to enable, \n `/sangmata_set off` to disable."
 
 
 # Check user that change first_name, last_name and usernaname
@@ -43,7 +43,7 @@ async def cek_mataa(_, ctx: Message, strings):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"💔<b>User History</b>💔\n\n 🤫 User: {ctx.from_user.mention} \n\n ID: [<code>{ctx.from_user.id}</code>]\n\n"
+        msg += f"💔<b>User History</b>💔\n\n User: {ctx.from_user.mention} \n\n ID: [<code>{ctx.from_user.id}</code>]\n\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
