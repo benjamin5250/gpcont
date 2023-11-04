@@ -113,4 +113,4 @@ async def set_mataa(_, ctx: Message, strings):
     else:
         await ctx.reply_text(strings("wrong_param"), delete_in=6)
 
-COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
+
