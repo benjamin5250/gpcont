@@ -31,7 +31,7 @@ async def cek_mataa(_, ctx: Message, strings):
         return
     if not await cek_userdata(ctx.chat.id, ctx.from_user.id):
         return await add_userdata(
-            ctx.chat.id
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
