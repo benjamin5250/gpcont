@@ -25,14 +25,29 @@ __help__ = "This function is on testing mode and isn't fully developed. \n Use `
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
 )
+#   user = await extract_user(message)
+#    token = await int_to_alpha(user.id)
+#    _check = await get_authuser_names(message.chat.id)
+#    count = len(_check)
+#    if int(count) == 25:
+#        return await message.reply_text(_["auth_1"])
+#    if token not in _check:
+#        assis = {
+#            "auth_user_id": user.id,
+#            "auth_name": user.first_name,
+#            "admin_id": message.from_user.id,
+#            "admin_name": message.from_user.first_name,
+#        }
 @use_chat_lang()
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
     chat_id = ctx.chat.id
     user_id = ctx.from_user.id
-    if not await cek_userdata(ctx.from_user.id):
-        return await add_userdata(chat_id, await int_to_alpha(user_id),
+    token = await int_to_alpha(user_id)
+    _check = await cek_userdata(ctx.chat.id)
+    if token not not in _check:
+        await add_userdata(chat_id, 
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -54,8 +69,7 @@ async def cek_mataa(_, ctx: Message, strings):
             else strings("no_uname")
         )
         msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
-        await add_userdata(chat_id, await int_to_alpha(user_id),
-            ctx.from_user.id,
+        await add_userdata(chat_id, 
             ctx.from_user.username,
             ctx.from_user.first_name,
             ctx.from_user.last_name,
@@ -64,8 +78,7 @@ async def cek_mataa(_, ctx: Message, strings):
         msg += strings("firstname_change_msg").format(
             bef=first_name, aft=ctx.from_user.first_name
         )
-        await add_userdata(chat_id, await int_to_alpha(user_id),
-            ctx.from_user.id,
+        await add_userdata(chat_id,
             ctx.from_user.username,
             ctx.from_user.first_name,
             ctx.from_user.last_name,
@@ -76,8 +89,7 @@ async def cek_mataa(_, ctx: Message, strings):
         msg += strings("lastname_change_msg").format(
             bef=lastname_before, aft=lastname_after
         )
-        await add_userdata(chat_id, await int_to_alpha(user_id),
-            ctx.from_user.id,
+        await add_userdata(chat_id,
             ctx.from_user.username,
             ctx.from_user.first_name,
             ctx.from_user.last_name,
