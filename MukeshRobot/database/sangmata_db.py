@@ -1,20 +1,45 @@
 from MukeshRobot.database import dbname
+from typing import Dict, Union
 
 matadb = dbname["sangmata"]
 
-
+#async def _get_authusers(chat_id: int) -> Dict[str, int]:
+#    _notes = await authuserdb.find_one({"chat_id": chat_id})
+#    if not _notes:
+#        return {}
+#    return _notes["notes"]
 # Get Data User
-async def cek_userdata(chat_id: int) -> bool:
-    user = await matadb.find_one({"chat_id": chat_id})
-    return bool(user)
+async def cek_userdata(chat_id: int) -> Dict[str, int]:
+    _history = await matadb.find_one({"chat_id": chat_id})
+    if not _history:
+        return {}
+    return _history["history"]
+
+#async def get_authuser(chat_id: int, name: str) -> Union[bool, dict]:
+#    name = name
+#    _notes = await _get_authusers(chat_id)
+#    if name in _notes:
+#        return _notes[name]
+#    else:
+#        return False
+async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
+    name = name
+    _history = await ek_userdata(chat_id)
+    return _history[name]
 
 
-async def get_userdata(chat_id: int) -> bool:
-    user = await matadb.find_one({"chat_id": chat_id})
-    return user["username"], user["first_name"], user["last_name"]
-
-
-async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name, userfullname):
+#async def save_authuser(chat_id: int, name: str, note: dict):
+#    name = name
+#    _notes = await _get_authusers(chat_id)
+#    _notes[name] = note
+#
+#    await authuserdb.update_one(
+#        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
+#    )
+async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name, name: str, history: dict):
+    name = name
+    _history = await cek_userdata(chat_id)
+    _hisrory[name] = history
     await matadb.update_one({"chat_id": chat_id},
         {
             "$set": {
