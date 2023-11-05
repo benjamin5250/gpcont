@@ -10,10 +10,10 @@ matadb = dbname["sangmata"]
 #    return _notes["notes"]
 # Get Data User
 async def _cek_userdata(chat_id: int) -> Dict[str, int]:
-    _history = await matadb.find_one({"chat_id": chat_id})
-    if not _history:
+    _notes = await matadb.find_one({"chat_id": chat_id})
+    if not _notes:
         return {}
-    return _history["history"]
+    return _notes["notes"]
 
 #async def get_authuser_names(chat_id: int) -> List[str]:
 #    _notes = []
@@ -21,10 +21,10 @@ async def _cek_userdata(chat_id: int) -> Dict[str, int]:
 #        _notes.append(note)
 #    return _notes
 async def cek_userdata(chat_id: int) -> List[str]:
-    _history = []
-    for history in awiat _cek_userdata(chat_id):
-        _history.append(history)
-    return _history
+    _notes = []
+    for note in await _cek_userdata(chat_id):
+        _notes.append(note)
+    return _notes
 
 #async def get_authuser(chat_id: int, name: str) -> Union[bool, dict]:
 #    name = name
@@ -35,9 +35,9 @@ async def cek_userdata(chat_id: int) -> List[str]:
 #        return False
 async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
     name = name
-    _history = await _cek_userdata(chat_id)
-    if name in _history:
-        return _history[name]
+    _notes = await _cek_userdata(chat_id)
+    if name in _notes:
+        return _notes[name]
     else:
         return False
 
@@ -51,15 +51,12 @@ async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
 #    )
 async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name, name: str, history: dict):
     name = name
-    _history = await _cek_userdata(chat_id)
-    _hisrory[name] = history
+    _notes = await _cek_userdata(chat_id)
+    _notes[name] = note
     await matadb.update_one({"chat_id": chat_id},
         {
             "$set": {
-                "user_id": user_id,
-                "username": username,
-                "first_name": first_name,
-                "last_name": last_name,
+                "notes": _notes
             }
         },
         upsert=True,
