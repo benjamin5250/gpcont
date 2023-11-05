@@ -30,8 +30,7 @@ async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
     if not await cek_userdata(ctx.from_user.id):
-        return await add_userdata(
-            ctx.chat.id,
+        return await add_userdata(chat_id, await int_to_alpha(user_id)
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -53,8 +52,7 @@ async def cek_mataa(_, ctx: Message, strings):
             else strings("no_uname")
         )
         msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
-        await add_userdata(
-            ctx.chat.id,
+        await add_userdata(chat_id, await int_to_alpha(user_id)
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
