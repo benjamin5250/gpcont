@@ -49,7 +49,7 @@ async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
 #    await authuserdb.update_one(
 #        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
 #    )
-async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name, name: str, history: dict):
+async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name, name: str, note: dict):
     name = name
     _notes = await _cek_userdata(chat_id)
     _notes[name] = note
