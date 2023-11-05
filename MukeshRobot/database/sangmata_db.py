@@ -10,7 +10,7 @@ async def cek_userdata(chat_id: int) -> bool:
 
 
 async def get_userdata(chat_id: int) -> bool:
-    user = await matadb.find_one({"user_id": user_id})
+    user = await matadb.find_one({"chat_id": chat_id})
     return user["username"], user["first_name"], user["last_name"]
 
 
