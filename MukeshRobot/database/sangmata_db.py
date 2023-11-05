@@ -4,7 +4,7 @@ matadb = dbname["sangmata"]
 
 
 # Get Data User
-async def cek_userdata(chat_id: int) -> Dict[str, int]:
+async def cek_userdata(chat_id: int, user_id: int) -> Dict[str, int]:
     user = await matadb.find_one({"chat_id": chat_id})
     if not user:
         return {}
