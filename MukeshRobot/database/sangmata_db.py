@@ -9,11 +9,22 @@ matadb = dbname["sangmata"]
 #        return {}
 #    return _notes["notes"]
 # Get Data User
-async def cek_userdata(chat_id: int) -> Dict[str, int]:
+async def _cek_userdata(chat_id: int) -> Dict[str, int]:
     _history = await matadb.find_one({"chat_id": chat_id})
     if not _history:
         return {}
     return _history["history"]
+
+#async def get_authuser_names(chat_id: int) -> List[str]:
+#    _notes = []
+#    for note in await _get_authusers(chat_id):
+#        _notes.append(note)
+#    return _notes
+async def cek_userdata(chat_id: int) -> List[str]:
+    _history = []
+    for history in awiat _cek_userdata(chat_id):
+        _history.append(history)
+    return _history
 
 #async def get_authuser(chat_id: int, name: str) -> Union[bool, dict]:
 #    name = name
@@ -24,7 +35,7 @@ async def cek_userdata(chat_id: int) -> Dict[str, int]:
 #        return False
 async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
     name = name
-    _history = await cek_userdata(chat_id)
+    _history = await _cek_userdata(chat_id)
     if name in _history:
         return _history[name]
     else:
@@ -40,7 +51,7 @@ async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
 #    )
 async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name, name: str, history: dict):
     name = name
-    _history = await cek_userdata(chat_id)
+    _history = await _cek_userdata(chat_id)
     _hisrory[name] = history
     await matadb.update_one({"chat_id": chat_id},
         {
