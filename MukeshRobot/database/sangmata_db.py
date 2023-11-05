@@ -15,7 +15,7 @@ async def get_userdata(chat_id: int) -> bool:
 
 
 async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name):
-    await matadb.update_one({"chat_id": chat_id},
+    await matadb.update_one({"user_id": user_id},
         {
             "$set": {
                 "user_id": user_id,
