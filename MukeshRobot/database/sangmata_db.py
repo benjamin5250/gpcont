@@ -4,21 +4,22 @@ matadb = dbname["sangmata"]
 
 
 # Get Data User
-async def cek_userdata(chat_id: int, user_id: int) -> bool:
-    user = await matadb.find_one({"chat_id": user_id})
-    return bool(user)
+async def cek_userdata(chat_id: int) -> Dict[str, int]:
+    user = await matadb.find_one({"chat_id": chat_id})
+    if not user:
+        return {}
+    return user["user"]
 
 
-async def get_userdata(chat_id: int, user_id: int) -> bool:
-    user = await matadb.find_one({"chat_id": user_id})
+async def get_userdata(chat_id: int) -> bool:
+    user = await matadb.find_one({"user_id": user_id})
     return user["username"], user["first_name"], user["last_name"]
 
 
 async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name):
-    await matadb.update_one({"chat_id": user_id},
+    await matadb.update_one({"chat_id": chat_id},
         {
             "$set": {
-                "chat_id": chat_id,
                 "user_id": user_id,
                 "username": username,
                 "first_name": first_name,
