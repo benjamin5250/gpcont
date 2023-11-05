@@ -25,8 +25,10 @@ async def cek_userdata(chat_id: int) -> Dict[str, int]:
 async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
     name = name
     _history = await cek_userdata(chat_id)
-    return _history[name]
-
+    if name in _history:
+        return _history[name]
+    else:
+        return False
 
 #async def save_authuser(chat_id: int, name: str, note: dict):
 #    name = name
@@ -43,7 +45,6 @@ async def add_userdata(chat_id: int, user_id: int, username, first_name, last_na
     await matadb.update_one({"chat_id": chat_id},
         {
             "$set": {
-                "history": history,
                 "user_id": user_id,
                 "username": username,
                 "first_name": first_name,
