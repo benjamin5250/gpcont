@@ -33,6 +33,7 @@ async def cek_mataa(_, ctx: Message, strings):
     user_id = ctx.from_user.id
     if not await cek_userdata(ctx.from_user.id):
         return await add_userdata(chat_id, await int_to_alpha(user_id),
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -55,6 +56,7 @@ async def cek_mataa(_, ctx: Message, strings):
         )
         msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
         await add_userdata(chat_id, await int_to_alpha(user_id),
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -65,6 +67,7 @@ async def cek_mataa(_, ctx: Message, strings):
             bef=first_name, aft=ctx.from_user.first_name
         )
         await add_userdata(chat_id, await int_to_alpha(user_id),
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
@@ -77,6 +80,7 @@ async def cek_mataa(_, ctx: Message, strings):
             bef=lastname_before, aft=lastname_after
         )
         await add_userdata(chat_id, await int_to_alpha(user_id),
+            ctx.chat.id,
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
