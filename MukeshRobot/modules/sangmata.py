@@ -46,7 +46,7 @@ async def cek_mataa(_, ctx: Message, strings):
     user_id = ctx.from_user.id
     token = await int_to_alpha(user_id)
     _check = await cek_userdata(ctx.chat.id)
-    if token not not in _check:
+    if token not in _check:
         await add_userdata(chat_id, 
             ctx.from_user.id,
             ctx.from_user.username,
