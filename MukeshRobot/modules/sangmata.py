@@ -32,7 +32,7 @@ async def cek_mataa(_, ctx: Message, strings):
             "user_id": user.id,
             "userfullname": message.from_user.full_name,
         }
- usernamebefore, userfullnamebefore = await get_userdata(ctx.chat.id)
+	usernamebefore, userfullnamebefore = await get_userdata(ctx.chat.id)
     msg = ""
     if (
         usernamebefore != ctx.from_user.username
