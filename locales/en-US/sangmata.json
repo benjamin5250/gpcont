@@ -2,7 +2,7 @@
     "no_uname": "<code>No Username</code>",
     "no_last_name": "<code>No Last Name</code>",
     "uname_change_msg": "✨ Changed username from {bef} ➡️ {aft}.\n",
-    "lastname_change_msg": "✨ Changed last name from {bef} ➡️ {aft}.\n",
+    "fullname_change_msg": "✨ Changed name from {bef} ➡️ {aft}.\n",
     "firstname_change_msg": "✨ Changed first name from {bef} ➡️ {aft}.\n",
     "set_sangmata_help": "Use <code>/{cmd} on</code>, to enable Name history. If you want disable, you can use off parameter.",
     "sangmata_already_on": "Name history already enabled in your groups.",
