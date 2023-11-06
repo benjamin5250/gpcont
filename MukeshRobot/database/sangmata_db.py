@@ -1,7 +1,7 @@
 from MukeshRobot.database import dbname
 from typing import Dict, Union, List
 
-matadb = name["sangmata"]
+matadb = db["sangmata"]
 
 #async def _get_authusers(chat_id: int) -> Dict[str, int]:
 #    _notes = await authuserdb.find_one({"chat_id": chat_id})
