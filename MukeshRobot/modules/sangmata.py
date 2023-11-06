@@ -1,11 +1,10 @@
-#ᴀᴅᴅ ʟɪᴄᴇɴsᴇ ᴛᴇxᴛ ʜᴇʀᴇ ɢᴇᴛ ɪᴛ ғʀᴏᴍ ʙᴇʟᴏᴡ.
+from pyrogram import filters
+from pyrogram.types import Message
 
-from MukeshRobot import pbot as app # This is bot's client
+from AnonXMusic import pbot as app
 from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
 from MukeshRobot.sanghandler import COMMAND_HANDLER
-from MukeshRobot.utils.admins import can_change_info
-from MukeshRobot.utils.localization import use_chat_lang
 from MukeshRobot.database.sangmata_db import (
     add_userdata,
     cek_userdata,
@@ -14,31 +13,12 @@ from MukeshRobot.database.sangmata_db import (
     sangmata_off,
     sangmata_on,
 )
+from MukeshRobot.utils.admins import can_change_info
+from MukeshRobot.utils.localization import use_chat_lang
 
-#ғᴏʀ /help ᴍᴇɴᴜ
-__mod_name__ = "SangMata"
-__help__ = "This function is on testing mode and isn't fully developed. \n Use `/sangmata_set on` to enable, \n `/sangmata_set off` to disable."
-
-
-# Check user that change first_name, last_name and usernaname
 @app.on_message(
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
-)
-#   user = await extract_user(message)
-#    token = await int_to_alpha(user.id)
-#    _check = await get_authuser_names(message.chat.id)
-#    count = len(_check)
-#    if int(count) == 25:
-#        return await message.reply_text(_["auth_1"])
-#    if token not in _check:
-#        assis = {
-#            "auth_user_id": user.id,
-#            "auth_name": user.first_name,
-#            "admin_id": message.from_user.id,
-#            "admin_name": message.from_user.first_name,
-#        }
-@use_chat_lang()
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
@@ -47,20 +27,18 @@ async def cek_mataa(_, ctx: Message, strings):
     token = await int_to_alpha(user_id)
     _check = await cek_userdata(ctx.chat.id)
     if token not in _check:
-        await add_userdata(chat_id, 
-            ctx.from_user.id,
-            ctx.from_user.username,
-            ctx.from_user.first_name,
-            ctx.from_user.last_name,
-        )
-    usernamebefore, first_name, lastname_before = await get_userdata(ctx.chat.id)
+        assis = {
+            "user_id": user.id,
+            "userfullname": message.from_user.full_name,
+        }
+ usernamebefore, userfullnamebefore = await get_userdata(ctx.chat.id)
     msg = ""
     if (
         usernamebefore != ctx.from_user.username
-        or first_name != ctx.from_user.first_name
-        or lastname_before != ctx.from_user.last_name
+        or fullnamebefore != ctx.from_user.full_name
     ):
-        msg += f"💔<b>User History</b>💔\n\n User: {ctx.from_user.mention} \n\n ID: [<code>{ctx.from_user.id}</code>]\n\n"
+        msg += f"💔<b>User History</b>💔\n\n User: {ctx.from_user.mention} \n\n ID: [<code>{ctx.from_user.id}</code>]\n\n"   
+
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
@@ -71,32 +49,18 @@ async def cek_mataa(_, ctx: Message, strings):
         msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
         await add_userdata(chat_id, 
             ctx.from_user.username,
-            ctx.from_user.first_name,
-            ctx.from_user.last_name,
+            ctx.from_user.full_name,
         )
-    if first_name != ctx.from_user.first_name:
-        msg += strings("firstname_change_msg").format(
-            bef=first_name, aft=ctx.from_user.first_name
-        )
-        await add_userdata(chat_id,
-            ctx.from_user.username,
-            ctx.from_user.first_name,
-            ctx.from_user.last_name,
-        )
-    if lastname_before != ctx.from_user.last_name:
-        lastname_before = lastname_before or strings("no_last_name")
-        lastname_after = ctx.from_user.last_name or strings("no_last_name")
-        msg += strings("lastname_change_msg").format(
-            bef=lastname_before, aft=lastname_after
+    if userfullname != ctx.from_user.full_name:
+        msg += strings("fullname_change_msg").format(
+            bef=userfullname, aft=ctx.from_user.full_name
         )
         await add_userdata(chat_id,
             ctx.from_user.username,
-            ctx.from_user.first_name,
-            ctx.from_user.last_name,
+            ctx.from_user.full_name,
         )
     if msg != "":
         await ctx.reply_text(msg, quote=False)
-
 
 @app.on_message(
     filters.group
