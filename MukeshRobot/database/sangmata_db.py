@@ -27,7 +27,7 @@ async def cek_userdata(chat_id: int) -> List[str]:
     return _notes
 
 #async def get_authuser(chat_id: int, name: str) -> Union[bool, dict]:
-#    name = name
+#    name = name["sangmata"]
 #    _notes = await _get_authusers(chat_id)
 #    if name in _notes:
 #        return _notes[name]
@@ -42,7 +42,7 @@ async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
         return False
 
 #async def save_authuser(chat_id: int, name: str, note: dict):
-#    name = name
+#    name = name["sangmata"]
 #    _notes = await _get_authusers(chat_id)
 #    _notes[name] = note
 #
