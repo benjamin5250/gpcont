@@ -1,4 +1,4 @@
-from MukeshRobot.database import dbname
+from MukeshRobot.database import db
 from typing import Dict, Union, List
 
 matadb = db["sangmata"]
