@@ -2,8 +2,6 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from MukeshRobot import pbot as app
-from pyrogram import filters # pyrogram filters
-from pyrogram.types import Message
 from MukeshRobot.sanghandler import COMMAND_HANDLER
 from MukeshRobot.database.sangmata_db import (
     add_userdata,
@@ -20,6 +18,7 @@ from MukeshRobot.utils.localization import use_chat_lang
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
 )    
+@use_chat_lang()
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
