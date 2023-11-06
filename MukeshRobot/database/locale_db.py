@@ -16,6 +16,12 @@ async def set_db_lang(chat_id: int, chat_type: str, lang_code: str):
         upsert=True,
     )
 
+async def name(chat_id: int, name: str):
+    await localesdb.update_one(
+        {"chat_id": chat_id},
+        {"$set": {"name": sang}},
+        upsert=True,
+    )
 
 async def get_db_lang(chat_id: int) -> str:
     ul = await localesdb.find_one({"chat_id": chat_id})
