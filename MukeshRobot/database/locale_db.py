@@ -2,9 +2,9 @@ from typing import Iterable
 
 from pyrogram.enums import ChatType
 
-from MukeshRobot.database import dbname
+from MukeshRobot.database import name
 
-localesdb = db["locale"]  # DB for localization
+localesdb = name["locale"]  # DB for localization
 
 group_types: Iterable[ChatType] = (ChatType.GROUP, ChatType.SUPERGROUP)
 
