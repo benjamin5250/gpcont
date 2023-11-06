@@ -1,7 +1,7 @@
-from MukeshRobot.database import name
+from MukeshRobot.database import dbname
 from typing import Dict, Union, List
 
-matadb = name["sangmata"]
+matadb = dbname["sangmata"]
 
 #async def _get_authusers(chat_id: int) -> Dict[str, int]:
 #    _notes = await authuserdb.find_one({"chat_id": chat_id})
@@ -34,7 +34,7 @@ async def cek_userdata(chat_id: int) -> List[str]:
 #    else:
 #        return False
 async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
-    name = name.lower().strip()    
+    name = name  
     _notes = await _cek_userdata(chat_id)
     if name in _notes:
         return _notes[name]
@@ -50,7 +50,7 @@ async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
 #        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
 #    )
 async def add_userdata(chat_id: int, user_id: int, username, userfullname, name: str, note: dict):
-    name = name.lower().strip()
+    name = name
     _notes = await _cek_userdata(chat_id)
     _notes[name] = note
     await matadb.update_one({"chat_id": chat_id},
