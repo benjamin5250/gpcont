@@ -4,7 +4,7 @@ from pyrogram.enums import ChatType
 
 from MukeshRobot.database import dbname
 
-localesdb = name["locale"]  # DB for localization
+localesdb = db["locale"]  # DB for localization
 
 group_types: Iterable[ChatType] = (ChatType.GROUP, ChatType.SUPERGROUP)
 
