@@ -29,14 +29,14 @@ async def cek_mataa(_, ctx: Message, strings):
     if token not in _check:
         assis = {
             "user_id": ctx.from_user.id,
-            "userfullname": ctx.from_user.full_name,
+            "userfullname": ctx.from_user.display_name,
             "username": ctx.from_user.username
         }
     usernamebefore, userfullnamebefore = await get_userdata(ctx.chat.id)
     msg = ""
     if (
         usernamebefore != ctx.from_user.username
-        or fullnamebefore != ctx.from_user.full_name
+        or fullnamebefore != ctx.from_user.display_name
     ):
         msg += f"💔<b>User History</b>💔\n\n User: {ctx.from_user.mention} \n\n ID: [<code>{ctx.from_user.id}</code>]\n\n"   
 
@@ -50,15 +50,15 @@ async def cek_mataa(_, ctx: Message, strings):
         msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
         await add_userdata(chat_id, 
             ctx.from_user.username,
-            ctx.from_user.full_name,
+            ctx.from_user.display_name,
         )
     if userfullname != ctx.from_user.full_name:
         msg += strings("fullname_change_msg").format(
-            bef=userfullname, aft=ctx.from_user.full_name
+            bef=userfullname, aft=ctx.from_user.display_name
         )
         await add_userdata(chat_id,
             ctx.from_user.username,
-            ctx.from_user.full_name,
+            ctx.from_user.display_name,
         )
     if msg != "":
         await ctx.reply_text(msg, quote=False)
