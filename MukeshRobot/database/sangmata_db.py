@@ -33,7 +33,7 @@ async def cek_userdata(chat_id: int) -> List[str]:
 #        return _notes[name]
 #    else:
 #        return False
-async def get_userdata(chat_id: int,name: str) -> Union[bool, dict]:
+async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
     name = name
     _notes = await _cek_userdata(chat_id)
     if name in _notes:
