@@ -1,5 +1,6 @@
 from MukeshRobot.database import dbname
 from typing import Dict, Union, List
+from MukeshRobot.database.locale_db import name
 
 matadb = dbname["sangmata"]
 
