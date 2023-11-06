@@ -36,7 +36,7 @@ async def cek_userdata(chat_id: int) -> List[str]:
 #    else:
 #        return False
 async def get_userdata(chat_id: int,) -> Union[bool, dict]:
-    id = Message.from_user.id
+    id = user_id
     _notes = await _cek_userdata(chat_id)
     if id in _notes:
         return _notes
@@ -52,7 +52,7 @@ async def get_userdata(chat_id: int,) -> Union[bool, dict]:
 #        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
 #    )
 async def add_userdata(chat_id: int, user_id: int, username, userfullname, note: dict):
-    id = Message.from_user.id
+    id = user_id
     _notes = await _cek_userdata(chat_id)
     _note[id] = note
     await matadb.update_one({"chat_id": chat_id},
