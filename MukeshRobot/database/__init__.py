@@ -4,4 +4,4 @@ from async_pymongo import AsyncClient
 from MukeshRobot import MONGO_DB_URI
 
 mongo = MongoCli(MONGO_DB_URI)
-dbname = mongo.MukeshRobot
+name = mongo.MukeshRobot
