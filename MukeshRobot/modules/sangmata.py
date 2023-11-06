@@ -28,8 +28,9 @@ async def cek_mataa(_, ctx: Message, strings):
     _check = await cek_userdata(ctx.chat.id)
     if token not in _check:
         assis = {
-            "user_id": user.id,
-            "userfullname": message.from_user.full_name,
+            "user_id": ctx.from_user.id,
+            "userfullname": ctx.from_user.full_name,
+            "username": ctx.from_user.username
         }
     usernamebefore, userfullnamebefore = await get_userdata(ctx.chat.id)
     msg = ""
