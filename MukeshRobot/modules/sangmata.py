@@ -71,7 +71,7 @@ async def cek_mataa(_, ctx: Message, strings):
 )
 
 #Full_NAME
-def full_name(user: User):
+async def full_name(user: User):
     return ctx.from_user.first_name + " " + ctx.from_user.last_name if ctx.from_user.last_name else ctx.from_user.first_name
 
 #On_Off    
