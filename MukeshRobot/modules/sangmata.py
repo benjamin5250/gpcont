@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
-from AnonXMusic import pbot as app
+from MukeshRobot import pbot as app
 from pyrogram import filters # pyrogram filters
 from pyrogram.types import Message
 from MukeshRobot.sanghandler import COMMAND_HANDLER
