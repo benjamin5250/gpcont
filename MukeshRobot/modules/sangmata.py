@@ -19,7 +19,7 @@ from MukeshRobot.utils.localization import use_chat_lang
     group=5,
 )    
 @use_chat_lang()
-async def cek_mataa(_, ctx: Message, strings, name):
+async def cek_mataa(_, ctx: Message, strings):
     name = name.lower().strip()
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
