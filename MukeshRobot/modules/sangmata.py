@@ -22,15 +22,13 @@ from MukeshRobot.utils.localization import use_chat_lang
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
-    if not await cek_userdata(ctx.from_user.id):
+    if not await cek_userdata(ctx.chat.id):
         return await add_userdata(
             ctx.from_user.id,
             ctx.from_user.username,
             ctx.from_user.first_name,
             ctx.from_user.last_name,
         )
-    usernamebefore, first_name, lastname_before = await get_userdata(ctx.from_user.id)
-    msg = ""
     usernamebefore, userfullnamebefore = await get_userdata(ctx.chat.id)
     msg = ""
     if (
