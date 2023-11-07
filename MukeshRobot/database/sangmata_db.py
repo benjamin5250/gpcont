@@ -21,7 +21,7 @@ async def add_userdata(chat_id: int, user_id: int, username, first_name, last_na
         {"chat_id": chat_id},
         {
             "$set": {
-                "user_id": user_id
+                "user_id": user_id,
                 "username": username,
                 "first_name": first_name,
                 "last_name": last_name,
