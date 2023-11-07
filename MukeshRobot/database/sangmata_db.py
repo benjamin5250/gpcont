@@ -36,7 +36,7 @@ async def cek_userdata(chat_id: int) -> List[str]:
 #    else:
 #        return False
 async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
-    name = dbname["snagmata"]
+    name = int_to_alpha(user_id)
     _notes = await _cek_userdata(chat_id)
     if id in _notes:
         return _notes
@@ -52,7 +52,7 @@ async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
 #        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
 #    )
 async def add_userdata(chat_id: int, user_id: int, username, userfullname, note: dict, name: str):
-    name = dbname["sangmata"]
+    name = int_to_alpha(user_id)
     _notes = await _cek_userdata(chat_id)
     _note[name] = note
     await matadb.update_one({"chat_id": chat_id},
@@ -63,6 +63,15 @@ async def add_userdata(chat_id: int, user_id: int, username, userfullname, note:
         },
         upsert=True,
     )
+
+# int_to_alpha
+async def int_to_alpha(user_id: int) -> str:
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+    text = ""
+    user_id = str(user_id)
+    for i in user_id:
+        text += alphabet[int(i)]
+    return text
 
 
 # Enable Mata MissKaty in Selected Chat
