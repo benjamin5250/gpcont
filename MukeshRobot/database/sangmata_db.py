@@ -5,6 +5,9 @@ from pyrogram.types import Message
 
 matadb = dbname["sangmata"]
 
+async def chat_id(_, ctx: Message):
+    return ctx.chat.id
+
 # Get Data User
 async def cek_userdata(user_id: int) -> bool:
     group = await matadb.find_one({"chat_id": chat_id})
