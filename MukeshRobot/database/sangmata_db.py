@@ -4,75 +4,32 @@ from MukeshRobot.database.locale_db import name
 from pyrogram.types import Message
 
 matadb = dbname["sangmata"]
-name = matadb
 
-#async def _get_authusers(chat_id: int) -> Dict[str, int]:
-#    _notes = await authuserdb.find_one({"chat_id": chat_id})
-#    if not _notes:
-#        return {}
-#    return _notes["notes"]
 # Get Data User
-async def _cek_userdata(chat_id: int) -> Dict[str, int]:
-    _notes = await matadb.find_one({"chat_id": chat_id})
-    if not _notes:
-        return {}
-    return _notes["notes"]
+async def cek_userdata(user_id: int) -> bool:
+    group = await matadb.find_one({"chat_id": chat_id})
+    return bool(group)
 
-#async def get_authuser_names(chat_id: int) -> List[str]:
-#    _notes = []
-#    for note in await _get_authusers(chat_id):
-#        _notes.append(note)
-#    return _notes
-async def cek_userdata(chat_id: int) -> List[str]:
-    _notes = []
-    for note in await _cek_userdata(chat_id):
-        _notes.append(note)
-    return _notes
 
-#async def get_authuser(chat_id: int, name: str) -> Union[bool, dict]:
-#    name = name["sangmata"]
-#    _notes = await _get_authusers(chat_id)
-#    if name in _notes:
-#        return _notes[name]
-#    else:
-#        return False
-async def get_userdata(chat_id: int, name: str) -> Union[bool, dict]:
-    name = matadb
-    _notes = await _cek_userdata(chat_id)
-    if id in _notes:
-        return _notes
-    else:
-        return False
+async def get_userdata(user_id: int, chat_id: int) -> bool:
+    group = await matadb.find_one({"chat_id": chat_id})
+    return group["username"], group["first_name"], group["last_name"], group["user_id"]
 
-#async def save_authuser(chat_id: int, name: str, note: dict):
-#    name = name["sangmata"]
-#    _notes = await _get_authusers(chat_id)
-#    _notes[name] = note
-#
-#    await authuserdb.update_one(
-#        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
-#    )
-async def add_userdata(chat_id: int, user_id: int, username, userfullname, note: dict, name: str):
-    name = matadb
-    _notes = await _cek_userdata(chat_id)
-    _note[name] = note
-    await matadb.update_one({"chat_id": chat_id},
+
+async def add_userdata(chat_id: int, user_id: int, username, first_name, last_name):
+    await matadb.update_one(
+        {"chat_id": chat_id},
         {
             "$set": {
-                "notes": _notes
+                "user_id": user_id
+                "username": username,
+                "first_name": first_name,
+                "last_name": last_name,
             }
         },
         upsert=True,
     )
 
-# int_to_alpha
-async def int_to_alpha(user_id: int) -> str:
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
-    text = ""
-    user_id = str(user_id)
-    for i in user_id:
-        text += alphabet[int(i)]
-    return text
 
 
 # Enable Mata MissKaty in Selected Chat
